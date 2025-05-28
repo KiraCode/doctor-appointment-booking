@@ -48,7 +48,12 @@ export default function Navbar() {
                 >
                   My Appointments
                 </p>
-                <p className="hover:text-black cursor-pointer">Logout</p>
+                <p
+                  onClick={() => setToken(false)}
+                  className="hover:text-black cursor-pointer"
+                >
+                  Logout
+                </p>
               </div>
             </div>
           </div>
