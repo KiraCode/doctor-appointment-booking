@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets_frontend/assets";
+import RelatedDoctors from "../components/RelatedDoctors";
 
 export default function Appointment() {
   const { docId } = useParams();
@@ -147,6 +148,7 @@ export default function Appointment() {
             {docSlots.length &&
               docSlots[slotIndex].map((item, index) => (
                 <p
+                  key={index}
                   onClick={() => setSlotTime(item.time)}
                   className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${
                     item.time === slotTime
@@ -158,8 +160,12 @@ export default function Appointment() {
                 </p>
               ))}
           </div>
-          <button className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6">Book an Appointment</button>
+          <button className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6">
+            Book an Appointment
+          </button>
         </div>
+        {/* listing related doctors */}
+        <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
       </div>
     )
   );
